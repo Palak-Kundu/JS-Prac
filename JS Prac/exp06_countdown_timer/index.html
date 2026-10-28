@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Countdown Timer</title>
+</head>
+<body>
+    <h2>Countdown Timer</h2>
+    <p id="timerDisplay"></p>
+
+    <script>
+        let timeLeft = prompt("Enter countdown time in seconds:");
+        let display = document.getElementById("timerDisplay");
+
+        let timer = setInterval(function() {
+            display.textContent = timeLeft + " seconds remaining";
+            timeLeft--;
+
+            if (timeLeft < 0) {
+                clearInterval(timer);
+                display.textContent = "Time's up!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

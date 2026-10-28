@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+    <script>
+        function calculate(op) {
+            let a = parseFloat(document.getElementById("num1").value);
+            let b = parseFloat(document.getElementById("num2").value);
+
+            if (isNaN(a) || (isNaN(b) && op !== 'square')) {
+                alert("Please enter valid numeric values!");
+                return;
+            }
+
+            let result;
+            switch(op) {
+                case '+': result = a + b; break;
+                case '-': result = a - b; break;
+                case '*': result = a * b; break;
+                case '/':
+                    if (b === 0) {
+                        alert("Division by zero is not allowed!");
+                        return;
+                    }
+                    result = a / b;
+                    break;
+                case 'square': result = a * a; break;
+                default: alert("Invalid operation");
+            }
+
+            document.getElementById("result").value = result;
+        }
+    </script>
+</head>
+<body>
+    <h2>JavaScript Calculator</h2>
+    <input type="text" id="num1" placeholder="Enter first number">
+    <input type="text" id="num2" placeholder="Enter second number (optional)">
+    <br><br>
+    <button onclick="calculate('+')">Add</button>
+    <button onclick="calculate('-')">Subtract</button>
+    <button onclick="calculate('*')">Multiply</button>
+    <button onclick="calculate('/')">Divide</button>
+    <button onclick="calculate('square')">Square</button>
+    <br><br>
+    Result: <input type="text" id="result" readonly>
+</body>
+</html>
